@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Notes App</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:linear-gradient(135deg,#667eea,#764ba2);
+min-height:100vh;
+padding:30px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+}
+
+h1{
+text-align:center;
+color:white;
+margin-bottom:20px;
+}
+
+form{
+display:flex;
+gap:10px;
+margin-bottom:30px;
+}
+
+textarea{
+flex:1;
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:16px;
+}
+
+button{
+background:#00c896;
+color:white;
+border:none;
+padding:15px 25px;
+border-radius:10px;
+cursor:pointer;
+}
+
+.notes{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0px 5px 15px rgba(0,0,0,0.2);
+}
+
+.delete{
+display:inline-block;
+margin-top:10px;
+background:red;
+color:white;
+padding:8px 12px;
+text-decoration:none;
+border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📝 My Notes App</h1>
+
+<form action="/add" method="POST">
+
+<textarea
+name="note"
+placeholder="Write your note..."
+required></textarea>
+
+<button>Add Note</button>
+
+</form>
+
+<div class="notes">
+
+{% for note in notes %}
+
+<div class="card">
+
+<p>{{ note[1] }}</p>
+
+<a
+class="delete"
+href="/delete/{{ note[0] }}">
+Delete
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</body>
+</html>
