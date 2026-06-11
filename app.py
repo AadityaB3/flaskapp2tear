@@ -4,7 +4,7 @@ import mysql.connector
 app = Flask(__name__)
 
 db = mysql.connector.connect(
-    host="host.docker.internal",
+    host="mysql",
     user="root",
     password="root",
     database="notesdb"

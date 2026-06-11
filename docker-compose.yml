@@ -1,0 +1,33 @@
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-db
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: notesdb
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./message.sql:/docker-entrypoint-initdb.d/message.sql
+
+    restart: always
+
+  flask-app:
+    image: aadi03docker/notes-app:v5
+    container_name: notes-app
+
+    ports:
+      - "5000:5000"
+
+    depends_on:
+      - mysql
+
+    restart: always
+
+volumes:
+  mysql-data:
