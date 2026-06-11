@@ -23,12 +23,16 @@ spec:
 
       - name: notes-app
 
-        image: aadi03docker/notes-app:v5
+        image: notes-app:v1
+        imagePullPolicy: IfNotPresent
 
         ports:
         - containerPort: 5000
 
         env:
+
+        - name: MYSQL_USER
+          value: root
 
         - name: MYSQL_HOST
           valueFrom:

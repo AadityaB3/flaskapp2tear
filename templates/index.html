@@ -30,7 +30,7 @@ color:white;
 margin-bottom:20px;
 }
 
-form{
+.container > form{
 display:flex;
 gap:10px;
 margin-bottom:30px;
@@ -76,6 +76,10 @@ text-decoration:none;
 border-radius:5px;
 }
 
+.delete-form{
+margin:0;
+}
+
 </style>
 
 </head>
@@ -84,7 +88,7 @@ border-radius:5px;
 
 <div class="container">
 
-<h1>📝 My Notes App</h1>
+<h1>My Notes App</h1>
 
 <form action="/add" method="POST">
 
@@ -105,11 +109,16 @@ required></textarea>
 
 <p>{{ note[1] }}</p>
 
-<a
+<form
+class="delete-form"
+action="/delete/{{ note[0] }}"
+method="POST">
+<button
 class="delete"
-href="/delete/{{ note[0] }}">
+type="submit">
 Delete
-</a>
+</button>
+</form>
 
 </div>
 

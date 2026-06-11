@@ -18,8 +18,15 @@ services:
     restart: always
 
   flask-app:
-    image: aadi03docker/notes-app:v5
+    image: notes-app:v1
+    build: .
     container_name: notes-app
+
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: notesdb
 
     ports:
       - "5000:5000"

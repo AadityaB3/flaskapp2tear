@@ -14,10 +14,10 @@ files = [
 print("Applying Kubernetes Resources...")
 
 for file in files:
-subprocess.run(
-["kubectl", "apply", "-f", file],
-check=True
-)
+    subprocess.run(
+        ["kubectl", "apply", "-f", file],
+        check=True
+    )
 
 print("Waiting for MySQL Pod...")
 

@@ -6,3 +6,19 @@ metadata:
 data:
   MYSQL_DATABASE: notesdb
   MYSQL_HOST: mysql-service
+  init.sql: |
+    CREATE DATABASE IF NOT EXISTS notesdb;
+
+    USE notesdb;
+
+    CREATE TABLE IF NOT EXISTS notes (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        content TEXT NOT NULL
+    );
+
+    INSERT INTO notes(content)
+    SELECT 'Welcome To My Notes App'
+    WHERE NOT EXISTS (
+        SELECT * FROM notes
+        WHERE content='Welcome To My Notes App'
+    );
